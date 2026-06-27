@@ -1,0 +1,362 @@
+/* ============================================================
+   JavaScript Guide — tema personalizzato
+   Brand JS: giallo #f7df1e. Tema chiaro + scuro.
+   Override del tema "vue" di docsify.
+   ============================================================ */
+
+:root {
+  --js-yellow: #f7df1e;
+  --js-yellow-dark: #d9c400;
+  --js-yellow-light: #fff8a0;
+
+  --theme-color: var(--js-yellow-dark);
+
+  --bg: #ffffff;
+  --bg-soft: #fafaf5;
+  --text: #1a1a1a;
+  --text-soft: #555550;
+  --border: #e8e8e0;
+  --sidebar-bg: #fafaf5;
+  --code-bg: #f7f7f4;
+  --code-inline-bg: #fff8cc;
+  --code-inline-text: #6b5800;
+  --link: #9a7d00;
+  --quote-bg: #fffdf0;
+  --quote-border: var(--js-yellow);
+  --details-bg: #fafaf5;
+  --details-border: #e8e8e0;
+  --table-head-bg: #fff8cc;
+}
+
+html.dark {
+  --bg: #1a1a1a;
+  --bg-soft: #222220;
+  --text: #e8e8d8;
+  --text-soft: #a0a090;
+  --border: #333328;
+  --sidebar-bg: #181818;
+  --code-bg: #222220;
+  --code-inline-bg: #2a2810;
+  --code-inline-text: #f0d060;
+  --link: #f0c800;
+  --quote-bg: #1e1c08;
+  --quote-border: var(--js-yellow-dark);
+  --details-bg: #1e1e1a;
+  --details-border: #333328;
+  --table-head-bg: #222210;
+  --theme-color: #f0c800;
+}
+
+/* ---------- Base ---------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+.markdown-section {
+  max-width: 860px;
+}
+
+.markdown-section p,
+.markdown-section li {
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.content,
+.markdown-section {
+  color: var(--text);
+}
+
+/* ---------- Titoli ---------- */
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4 {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.markdown-section h1 {
+  border-bottom: 3px solid var(--js-yellow);
+  padding-bottom: 0.3em;
+}
+
+.markdown-section h2 {
+  border-left: 4px solid var(--js-yellow);
+  padding-left: 0.5rem;
+  border-bottom: none;
+  margin-top: 2.2rem;
+}
+
+.markdown-section h3 {
+  color: var(--text-soft);
+}
+
+.markdown-section a {
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.markdown-section a:hover {
+  border-bottom-color: var(--js-yellow);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-nav {
+  line-height: 1.9;
+}
+
+.sidebar ul li a {
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.sidebar ul li a:hover {
+  color: var(--link);
+}
+
+.sidebar-nav > ul > p,
+.sidebar-nav strong {
+  color: var(--text);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 1rem;
+  display: block;
+}
+
+.sidebar-nav li.active > a {
+  color: #000;
+  border-left: 4px solid var(--js-yellow);
+  background: var(--js-yellow-light);
+  padding-left: 0.5rem;
+  font-weight: 700;
+}
+
+html.dark .sidebar-nav li.active > a {
+  color: var(--js-yellow);
+  background: #2a2810;
+}
+
+.app-name-link {
+  color: var(--text) !important;
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.js-badge {
+  display: inline-block;
+  background: var(--js-yellow);
+  color: #000;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+  line-height: 1;
+  letter-spacing: -1px;
+  font-size: 16px;
+}
+
+.sidebar .app-name {
+  margin-top: 1.2rem;
+}
+
+/* ---------- Codice ---------- */
+.markdown-section code {
+  background: var(--code-inline-bg);
+  color: var(--code-inline-text);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
+  font-size: 0.85em;
+}
+
+.markdown-section pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--js-yellow);
+  border-radius: 8px;
+}
+
+.markdown-section pre > code {
+  background: transparent;
+  color: var(--text);
+  font-size: 0.86em;
+}
+
+/* ---------- Citazioni / note ---------- */
+.markdown-section blockquote {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--quote-border);
+  border-radius: 0 6px 6px 0;
+  color: var(--text);
+  padding: 0.6em 1em;
+}
+
+.markdown-section blockquote p {
+  color: var(--text);
+}
+
+/* ---------- Tabelle ---------- */
+.markdown-section table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-section tr {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.markdown-section th {
+  background: var(--table-head-bg);
+  color: var(--text);
+}
+
+.markdown-section td,
+.markdown-section th {
+  border: 1px solid var(--border);
+}
+
+/* ---------- Quiz collassabili (<details>) ---------- */
+.markdown-section details {
+  background: var(--details-bg);
+  border: 1px solid var(--details-border);
+  border-left: 4px solid var(--js-yellow);
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  margin: 0.8em 0;
+}
+
+.markdown-section details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  outline: none;
+}
+
+.markdown-section details[open] summary {
+  margin-bottom: 0.6em;
+  color: var(--link);
+}
+
+/* ---------- Ricerca ---------- */
+.search input {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.search .results-panel {
+  background: var(--bg);
+}
+
+.search h2,
+.search .matching-post h2 {
+  color: var(--link);
+}
+
+.search p {
+  color: var(--text-soft);
+}
+
+/* ---------- Paginazione ---------- */
+.docsify-pagination-container {
+  border-top: 1px solid var(--border);
+  color: var(--text-soft);
+}
+
+.pagination-item-label,
+.pagination-item-title {
+  color: var(--link);
+}
+
+/* ---------- Copy code ---------- */
+.docsify-copy-code-button {
+  background: var(--js-yellow-dark) !important;
+  color: #000 !important;
+}
+
+/* ---------- Coverpage ---------- */
+section.cover {
+  background: linear-gradient(135deg, #1a1a00 0%, #3d3400 50%, #1a1a00 100%) !important;
+}
+
+section.cover .cover-main > p,
+section.cover .cover-main > h1,
+section.cover .cover-main blockquote p {
+  color: #f0f0e0;
+}
+
+section.cover .cover-main h1 em {
+  color: var(--js-yellow);
+  font-style: normal;
+}
+
+section.cover .cover-main > p a {
+  border: 2px solid var(--js-yellow);
+  color: var(--js-yellow);
+  border-radius: 4px;
+  padding: 0.3em 0.8em;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+section.cover .cover-main > p a:hover {
+  background: var(--js-yellow);
+  color: #000;
+}
+
+section.cover.show ~ .sidebar,
+section.cover.show ~ .content {
+  display: none;
+}
+
+/* ---------- Pulsante toggle tema ---------- */
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.08);
+  background: var(--js-yellow);
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  #theme-toggle {
+    top: 10px;
+    right: 56px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}

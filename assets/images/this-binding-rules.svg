@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="12">
+  <rect width="580" height="380" fill="#fafaf5" rx="8"/>
+  <text x="290" y="26" text-anchor="middle" fill="#1a1a1a" font-weight="bold" font-size="15">Regole di binding di this — ordine di precedenza</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#999"/>
+    </marker>
+    <marker id="arry" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f7df1e"/>
+    </marker>
+  </defs>
+
+  <!-- START -->
+  <rect x="220" y="42" width="140" height="34" rx="17" fill="#1a1a1a"/>
+  <text x="290" y="64" text-anchor="middle" fill="white" font-weight="bold" font-size="12">Trova il call-site</text>
+
+  <!-- Arrow down -->
+  <line x1="290" y1="76" x2="290" y2="98" stroke="#999" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Q1: new? -->
+  <polygon points="290,100 390,128 290,156 190,128" fill="#ffe066" stroke="#d9c400" stroke-width="2"/>
+  <text x="290" y="124" text-anchor="middle" fill="#5a4200" font-weight="bold" font-size="11">Chiamata con new?</text>
+  <text x="290" y="140" text-anchor="middle" fill="#7a6000" font-size="10">new foo()</text>
+
+  <!-- YES → R1 -->
+  <line x1="390" y1="128" x2="445" y2="128" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="415" y="121" text-anchor="middle" fill="#27ae60" font-size="10">SÌ</text>
+  <rect x="445" y="110" width="115" height="36" rx="6" fill="#d4f0d4" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="503" y="126" text-anchor="middle" fill="#1a5c1a" font-size="10" font-weight="bold">new binding</text>
+  <text x="503" y="140" text-anchor="middle" fill="#1a5c1a" font-family="'SF Mono',Consolas,monospace" font-size="9">this = nuovo oggetto</text>
+
+  <!-- NO → Q2 -->
+  <line x1="290" y1="156" x2="290" y2="178" stroke="#999" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="270" y="170" fill="#c0392b" font-size="10">NO</text>
+
+  <!-- Q2: call/apply/bind? -->
+  <polygon points="290,180 390,208 290,236 190,208" fill="#ffe066" stroke="#d9c400" stroke-width="2"/>
+  <text x="290" y="204" text-anchor="middle" fill="#5a4200" font-weight="bold" font-size="11">call / apply / bind?</text>
+  <text x="290" y="220" text-anchor="middle" fill="#7a6000" font-size="10">foo.call(obj)</text>
+
+  <!-- YES → R2 -->
+  <line x1="390" y1="208" x2="445" y2="208" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="415" y="201" text-anchor="middle" fill="#27ae60" font-size="10">SÌ</text>
+  <rect x="445" y="190" width="115" height="36" rx="6" fill="#d4f0d4" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="503" y="206" text-anchor="middle" fill="#1a5c1a" font-size="10" font-weight="bold">explicit binding</text>
+  <text x="503" y="220" text-anchor="middle" fill="#1a5c1a" font-family="'SF Mono',Consolas,monospace" font-size="9">this = obj specificato</text>
+
+  <!-- NO → Q3 -->
+  <line x1="290" y1="236" x2="290" y2="258" stroke="#999" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="270" y="250" fill="#c0392b" font-size="10">NO</text>
+
+  <!-- Q3: context object? -->
+  <polygon points="290,260 390,288 290,316 190,288" fill="#ffe066" stroke="#d9c400" stroke-width="2"/>
+  <text x="290" y="284" text-anchor="middle" fill="#5a4200" font-weight="bold" font-size="11">Oggetto contesto?</text>
+  <text x="290" y="300" text-anchor="middle" fill="#7a6000" font-size="10">obj.foo()</text>
+
+  <!-- YES → R3 -->
+  <line x1="390" y1="288" x2="445" y2="288" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="415" y="281" text-anchor="middle" fill="#27ae60" font-size="10">SÌ</text>
+  <rect x="445" y="270" width="115" height="36" rx="6" fill="#d4f0d4" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="503" y="286" text-anchor="middle" fill="#1a5c1a" font-size="10" font-weight="bold">implicit binding</text>
+  <text x="503" y="300" text-anchor="middle" fill="#1a5c1a" font-family="'SF Mono',Consolas,monospace" font-size="9">this = obj.context</text>
+
+  <!-- NO → R4 -->
+  <line x1="290" y1="316" x2="290" y2="338" stroke="#999" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="270" y="330" fill="#c0392b" font-size="10">NO</text>
+  <rect x="205" y="340" width="170" height="32" rx="6" fill="#f5e0e0" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="290" y="357" text-anchor="middle" fill="#8b1a1a" font-size="10" font-weight="bold">default binding</text>
+  <text x="290" y="369" text-anchor="middle" fill="#8b1a1a" font-family="'SF Mono',Consolas,monospace" font-size="9">global / undefined (strict)</text>
+
+  <!-- Arrow function note -->
+  <rect x="14" y="100" width="158" height="56" rx="6" fill="#e8f0ff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="93" y="118" text-anchor="middle" fill="#1a4080" font-size="10" font-weight="bold">Arrow function</text>
+  <text x="93" y="132" text-anchor="middle" fill="#4a6080" font-size="9">ignora le 4 regole —</text>
+  <text x="93" y="146" text-anchor="middle" fill="#4a6080" font-size="9">eredita this dal</text>
+  <text x="93" y="160" text-anchor="middle" fill="#4a6080" font-size="9">scope lessicale</text>
+</svg>

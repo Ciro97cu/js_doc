@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript — You Don't Know JS</title>
+  <meta name="description" content="Guida completa a JavaScript in italiano, basata sulla serie You Don't Know JS di Kyle Simpson." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <meta name="theme-color" content="#f7df1e" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="app">Caricamento della guida…</div>
+  <script>
+    window.$docsify = {
+      name: 'JavaScript',
+      nameLink: '#/',
+      loadSidebar: true,
+      loadNavbar: false,
+      coverpage: true,
+      onlyCover: false,
+      auto2top: true,
+      maxLevel: 3,
+      subMaxLevel: 3,
+      homepage: 'README.md',
+      notFoundPage: true,
+      search: {
+        placeholder: 'Cerca nella guida…',
+        noData: 'Nessun risultato.',
+        depth: 4
+      },
+      pagination: {
+        previousText: 'Precedente',
+        nextText: 'Successivo',
+        crossChapter: true,
+        crossChapterText: true
+      },
+      copyCode: {
+        buttonText: 'Copia',
+        errorText: 'Errore',
+        successText: 'Copiato'
+      },
+      plugins: [
+        function (hook) {
+          hook.mounted(function () {
+            var KEY = 'js-doc-theme';
+            var btn = document.createElement('button');
+            btn.id = 'theme-toggle';
+            btn.type = 'button';
+            btn.setAttribute('aria-label', 'Cambia tema chiaro/scuro');
+            var saved = localStorage.getItem(KEY);
+            var dark = saved
+              ? saved === 'dark'
+              : window.matchMedia('(prefers-color-scheme: dark)').matches;
+            function apply() {
+              document.documentElement.classList.toggle('dark', dark);
+              btn.textContent = dark ? '☀️' : '🌙';
+              btn.title = dark ? 'Passa al tema chiaro' : 'Passa al tema scuro';
+            }
+            apply();
+            btn.addEventListener('click', function () {
+              dark = !dark;
+              localStorage.setItem(KEY, dark ? 'dark' : 'light');
+              apply();
+            });
+            document.body.appendChild(btn);
+          });
+        }
+      ]
+    };
+  </script>
+
+  <!-- Core docsify -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Ricerca full-text -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <!-- Copia codice -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- Navigazione Precedente/Successivo -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- Evidenziazione sintassi (Prism) -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+</body>
+</html>

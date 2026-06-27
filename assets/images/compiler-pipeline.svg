@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 120" font-family="'SF Mono', 'Fira Code', Consolas, monospace" font-size="13">
+  <!-- Background -->
+  <rect width="720" height="120" fill="#fafaf5" rx="8"/>
+
+  <!-- Step 1: Source Code -->
+  <rect x="10" y="20" width="140" height="80" fill="#fff8cc" stroke="#f7df1e" stroke-width="2" rx="6"/>
+  <text x="80" y="50" text-anchor="middle" fill="#6b5800" font-weight="bold" font-size="12">Source Code</text>
+  <text x="80" y="68" text-anchor="middle" fill="#444" font-size="11">var a = 2;</text>
+
+  <!-- Arrow 1 -->
+  <line x1="152" y1="60" x2="186" y2="60" stroke="#888" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="169" y="50" text-anchor="middle" fill="#888" font-size="10">Lexing</text>
+
+  <!-- Step 2: Tokens -->
+  <rect x="188" y="20" width="140" height="80" fill="#fff8cc" stroke="#f7df1e" stroke-width="2" rx="6"/>
+  <text x="258" y="45" text-anchor="middle" fill="#6b5800" font-weight="bold" font-size="12">Tokens</text>
+  <text x="258" y="62" text-anchor="middle" fill="#444" font-size="10">var | a | = | 2 | ;</text>
+
+  <!-- Arrow 2 -->
+  <line x1="330" y1="60" x2="364" y2="60" stroke="#888" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="347" y="50" text-anchor="middle" fill="#888" font-size="10">Parsing</text>
+
+  <!-- Step 3: AST -->
+  <rect x="366" y="20" width="150" height="80" fill="#fff8cc" stroke="#f7df1e" stroke-width="2" rx="6"/>
+  <text x="441" y="40" text-anchor="middle" fill="#6b5800" font-weight="bold" font-size="12">AST</text>
+  <text x="441" y="57" text-anchor="middle" fill="#444" font-size="10">VariableDeclaration</text>
+  <text x="441" y="72" text-anchor="middle" fill="#888" font-size="10">└ Identifier: a</text>
+  <text x="441" y="85" text-anchor="middle" fill="#888" font-size="10">└ NumericLiteral: 2</text>
+
+  <!-- Arrow 3 -->
+  <line x1="518" y1="60" x2="552" y2="60" stroke="#888" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="535" y="50" text-anchor="middle" fill="#888" font-size="10">Code-gen</text>
+
+  <!-- Step 4: Bytecode -->
+  <rect x="554" y="20" width="150" height="80" fill="#fff8cc" stroke="#f7df1e" stroke-width="2" rx="6"/>
+  <text x="629" y="45" text-anchor="middle" fill="#6b5800" font-weight="bold" font-size="12">Codice macchina</text>
+  <text x="629" y="64" text-anchor="middle" fill="#444" font-size="10">alloca 'a', assegna 2</text>
+  <text x="629" y="82" text-anchor="middle" fill="#888" font-size="10">→ eseguito dall'Engine</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

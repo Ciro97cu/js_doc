@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="'Fira Mono', 'Courier New', monospace">
+  <!-- background -->
+  <rect width="720" height="420" fill="#1a1a1a" rx="12"/>
+
+  <!-- title -->
+  <text x="360" y="32" text-anchor="middle" fill="#f7df1e" font-size="14" font-weight="bold">[[Prototype]] Chain</text>
+
+  <!-- ===== Object: myObject ===== -->
+  <rect x="30" y="55" width="180" height="90" fill="#252525" stroke="#f7df1e" stroke-width="2" rx="6"/>
+  <text x="120" y="76" text-anchor="middle" fill="#f7df1e" font-size="11" font-weight="bold">myObject</text>
+  <line x1="30" y1="84" x2="210" y2="84" stroke="#444" stroke-width="1"/>
+  <text x="45" y="102" fill="#aaa" font-size="10">c: 3</text>
+  <text x="45" y="120" fill="#aaa" font-size="10">[[Prototype]] ──▶</text>
+  <text x="45" y="136" fill="#666" font-size="9" font-style="italic">own property: c</text>
+
+  <!-- arrow myObject -> anotherObject -->
+  <line x1="210" y1="110" x2="270" y2="110" stroke="#f7df1e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="270,106 278,110 270,114" fill="#f7df1e"/>
+
+  <!-- ===== Object: anotherObject ===== -->
+  <rect x="278" y="55" width="190" height="105" fill="#252525" stroke="#4ec9b0" stroke-width="2" rx="6"/>
+  <text x="373" y="76" text-anchor="middle" fill="#4ec9b0" font-size="11" font-weight="bold">anotherObject</text>
+  <line x1="278" y1="84" x2="468" y2="84" stroke="#444" stroke-width="1"/>
+  <text x="293" y="102" fill="#aaa" font-size="10">a: 2</text>
+  <text x="293" y="120" fill="#aaa" font-size="10">b: "hello"</text>
+  <text x="293" y="138" fill="#aaa" font-size="10">[[Prototype]] ──▶</text>
+  <text x="293" y="152" fill="#666" font-size="9" font-style="italic">own properties: a, b</text>
+
+  <!-- arrow anotherObject -> Object.prototype -->
+  <line x1="468" y1="110" x2="528" y2="110" stroke="#4ec9b0" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="528,106 536,110 528,114" fill="#4ec9b0"/>
+
+  <!-- ===== Object.prototype ===== -->
+  <rect x="536" y="55" width="155" height="120" fill="#252525" stroke="#569cd6" stroke-width="2" rx="6"/>
+  <text x="613" y="76" text-anchor="middle" fill="#569cd6" font-size="11" font-weight="bold">Object.prototype</text>
+  <line x1="536" y1="84" x2="691" y2="84" stroke="#444" stroke-width="1"/>
+  <text x="551" y="102" fill="#aaa" font-size="10">toString()</text>
+  <text x="551" y="118" fill="#aaa" font-size="10">valueOf()</text>
+  <text x="551" y="134" fill="#aaa" font-size="10">hasOwnProperty()</text>
+  <text x="551" y="150" fill="#aaa" font-size="10">isPrototypeOf()</text>
+  <text x="551" y="166" fill="#666" font-size="9" font-style="italic">[[Prototype]]: null</text>
+
+  <!-- null terminator -->
+  <text x="613" y="198" text-anchor="middle" fill="#666" font-size="11">▼ null (fine chain)</text>
+
+  <!-- ===== Lookup example ===== -->
+  <rect x="30" y="200" width="660" height="32" fill="#1e1e1e" stroke="#333" rx="4"/>
+  <text x="45" y="221" fill="#666" font-size="10">// myObject.a → non trovata su myObject → cerca su anotherObject → trovata: 2</text>
+
+  <!-- ===== Shadowing section ===== -->
+  <text x="30" y="268" fill="#f7df1e" font-size="12" font-weight="bold">Shadowing — 3 casi quando foo esiste più in alto nella chain</text>
+
+  <!-- Case 1 -->
+  <rect x="30" y="280" width="205" height="95" fill="#1e2a1e" stroke="#4ec9b0" stroke-width="1.5" rx="5"/>
+  <text x="132" y="298" text-anchor="middle" fill="#4ec9b0" font-size="10" font-weight="bold">Caso 1: writable: true</text>
+  <line x1="30" y1="304" x2="235" y2="304" stroke="#333" stroke-width="1"/>
+  <text x="45" y="320" fill="#aaa" font-size="9">foo trovata, writable: true</text>
+  <text x="45" y="336" fill="#aaa" font-size="9">→ crea shadow su myObject</text>
+  <text x="45" y="352" fill="#aaa" font-size="9">= assegnamento normale</text>
+  <text x="45" y="367" fill="#6a9955" font-size="9">✓ shadowing avviene</text>
+
+  <!-- Case 2 -->
+  <rect x="255" y="280" width="205" height="95" fill="#2a1e1e" stroke="#f44747" stroke-width="1.5" rx="5"/>
+  <text x="357" y="298" text-anchor="middle" fill="#f44747" font-size="10" font-weight="bold">Caso 2: writable: false</text>
+  <line x1="255" y1="304" x2="460" y2="304" stroke="#333" stroke-width="1"/>
+  <text x="270" y="320" fill="#aaa" font-size="9">foo trovata, writable: false</text>
+  <text x="270" y="336" fill="#aaa" font-size="9">→ assegnamento ignorato</text>
+  <text x="270" y="352" fill="#aaa" font-size="9">strict mode → TypeError</text>
+  <text x="270" y="367" fill="#f44747" font-size="9">✗ shadowing non avviene</text>
+
+  <!-- Case 3 -->
+  <rect x="480" y="280" width="210" height="95" fill="#2a1e2a" stroke="#c586c0" stroke-width="1.5" rx="5"/>
+  <text x="585" y="298" text-anchor="middle" fill="#c586c0" font-size="10" font-weight="bold">Caso 3: setter</text>
+  <line x1="480" y1="304" x2="690" y2="304" stroke="#333" stroke-width="1"/>
+  <text x="495" y="320" fill="#aaa" font-size="9">foo è un accessor (setter)</text>
+  <text x="495" y="336" fill="#aaa" font-size="9">→ setter viene chiamato</text>
+  <text x="495" y="352" fill="#aaa" font-size="9">usa Object.defineProperty</text>
+  <text x="495" y="367" fill="#c586c0" font-size="9">✗ shadowing non avviene</text>
+
+  <!-- footer -->
+  <text x="360" y="410" text-anchor="middle" fill="#555" font-size="9">Solo caso 1 crea shadowing con assegnamento = · YDKJS — this &amp; Object Prototypes</text>
+</svg>

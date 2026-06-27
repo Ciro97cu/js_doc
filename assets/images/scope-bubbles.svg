@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13">
+  <!-- Background -->
+  <rect width="520" height="300" fill="#fafaf5" rx="8"/>
+
+  <!-- Title -->
+  <text x="260" y="26" text-anchor="middle" fill="#1a1a1a" font-weight="bold" font-size="15">Scope Bubbles — Lexical Scope</text>
+
+  <!-- Bubble 1: Global -->
+  <ellipse cx="260" cy="165" rx="240" ry="120" fill="#fffbe0" stroke="#f7df1e" stroke-width="2.5"/>
+  <text x="50" y="62" fill="#9a7d00" font-weight="bold" font-size="12">① Global Scope</text>
+  <text x="50" y="78" fill="#6b5800" font-size="11" font-family="'SF Mono', Consolas, monospace">foo</text>
+
+  <!-- Bubble 2: foo() -->
+  <ellipse cx="270" cy="175" rx="165" ry="85" fill="#fff3b0" stroke="#d9c400" stroke-width="2"/>
+  <text x="130" y="108" fill="#9a7d00" font-weight="bold" font-size="12">② Scope di foo()</text>
+  <text x="130" y="124" fill="#6b5800" font-size="11" font-family="'SF Mono', Consolas, monospace">a, b, bar</text>
+
+  <!-- Bubble 3: bar() -->
+  <ellipse cx="280" cy="188" rx="90" ry="55" fill="#ffe066" stroke="#c8a800" stroke-width="1.5"/>
+  <text x="215" y="168" fill="#7a5c00" font-weight="bold" font-size="12">③ Scope di bar()</text>
+  <text x="215" y="185" fill="#5a4200" font-size="11" font-family="'SF Mono', Consolas, monospace">c</text>
+
+  <!-- Code reference -->
+  <text x="260" y="260" text-anchor="middle" fill="#888" font-size="11" font-family="'SF Mono', Consolas, monospace">foo(2) → bar(b*3) → console.log(a, b, c)</text>
+  <text x="260" y="278" text-anchor="middle" fill="#aaa" font-size="10">a e b trovati in ②, c trovato in ③</text>
+</svg>

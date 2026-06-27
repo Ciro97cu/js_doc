@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" font-family="'SF Mono', 'Fira Code', Consolas, monospace" font-size="13">
+  <!-- Background -->
+  <rect width="560" height="160" fill="#fafaf5" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="24" text-anchor="middle" fill="#1a1a1a" font-weight="bold" font-size="14" font-family="-apple-system, sans-serif">LHS vs RHS lookup</text>
+
+  <!-- LHS side -->
+  <rect x="20" y="40" width="240" height="108" fill="#fff8cc" stroke="#f7df1e" stroke-width="2" rx="6"/>
+  <text x="140" y="62" text-anchor="middle" fill="#9a7d00" font-weight="bold" font-size="12" font-family="-apple-system, sans-serif">LHS  (target dell'assegnamento)</text>
+  <text x="140" y="84" text-anchor="middle" fill="#333" font-size="13">a = 2;</text>
+  <text x="140" y="104" text-anchor="middle" fill="#888" font-size="11" font-family="-apple-system, sans-serif">→ cerca il contenitore</text>
+  <text x="140" y="120" text-anchor="middle" fill="#888" font-size="11" font-family="-apple-system, sans-serif">→ vuole scrivere in  a</text>
+  <text x="140" y="138" text-anchor="middle" fill="#c04000" font-size="10" font-family="-apple-system, sans-serif">fail in strict mode → ReferenceError</text>
+
+  <!-- RHS side -->
+  <rect x="300" y="40" width="240" height="108" fill="#fffbe0" stroke="#d9c400" stroke-width="2" rx="6"/>
+  <text x="420" y="62" text-anchor="middle" fill="#9a7d00" font-weight="bold" font-size="12" font-family="-apple-system, sans-serif">RHS  (sorgente del valore)</text>
+  <text x="420" y="84" text-anchor="middle" fill="#333" font-size="13">console.log( a );</text>
+  <text x="420" y="104" text-anchor="middle" fill="#888" font-size="11" font-family="-apple-system, sans-serif">→ cerca il valore</text>
+  <text x="420" y="120" text-anchor="middle" fill="#888" font-size="11" font-family="-apple-system, sans-serif">→ vuole leggere  a</text>
+  <text x="420" y="138" text-anchor="middle" fill="#c04000" font-size="10" font-family="-apple-system, sans-serif">fail sempre → ReferenceError</text>
+</svg>

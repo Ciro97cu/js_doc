@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="12">
+  <rect width="580" height="320" fill="#fafaf5" rx="8"/>
+
+  <!-- Title -->
+  <text x="290" y="26" text-anchor="middle" fill="#1a1a1a" font-weight="bold" font-size="15">Closure — il riferimento allo scope sopravvive alla funzione</text>
+
+  <!-- LEFT: foo() scope (gone?) -->
+  <rect x="20" y="48" width="220" height="175" rx="8" fill="#fff3b0" stroke="#d9c400" stroke-width="2"/>
+  <text x="130" y="68" text-anchor="middle" fill="#9a7d00" font-weight="bold" font-size="12">Scope di foo()</text>
+  <text x="130" y="84" text-anchor="middle" fill="#aaa" font-size="10">(foo() ha già restituito)</text>
+
+  <!-- var a inside foo -->
+  <rect x="40" y="94" width="180" height="36" rx="4" fill="#ffe066" stroke="#c8a800" stroke-width="1.5"/>
+  <text x="130" y="108" text-anchor="middle" fill="#6b5800" font-family="'SF Mono',Consolas,monospace" font-size="11" font-weight="bold">var a = 2</text>
+  <text x="130" y="124" text-anchor="middle" fill="#7a5c00" font-size="10">mantiene il valore</text>
+
+  <!-- bar() defined inside foo -->
+  <rect x="40" y="144" width="180" height="50" rx="4" fill="#ffe066" stroke="#c8a800" stroke-width="1.5"/>
+  <text x="130" y="160" text-anchor="middle" fill="#6b5800" font-family="'SF Mono',Consolas,monospace" font-size="11">function bar()</text>
+  <text x="130" y="178" text-anchor="middle" fill="#888" font-size="10">dichiarata qui → closure</text>
+  <text x="130" y="192" text-anchor="middle" fill="#888" font-size="10">sullo scope di foo()</text>
+
+  <!-- "alive" badge -->
+  <rect x="55" y="208" width="150" height="22" rx="4" fill="#27ae60" stroke="none"/>
+  <text x="130" y="223" text-anchor="middle" fill="white" font-size="10" font-weight="bold">scope ancora vivo — closure lo tiene</text>
+
+  <!-- Arrow: closure reference -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f7df1e"/>
+    </marker>
+    <marker id="arrowback" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#e67e22"/>
+    </marker>
+  </defs>
+
+  <!-- Connection line -->
+  <path d="M 240 170 Q 300 150 340 170" stroke="#f7df1e" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="290" y="148" text-anchor="middle" fill="#9a7d00" font-size="10" font-weight="bold">closure reference</text>
+
+  <!-- RIGHT: baz() executing outside -->
+  <rect x="340" y="48" width="220" height="175" rx="8" fill="#e8f0ff" stroke="#4a90d9" stroke-width="2"/>
+  <text x="450" y="68" text-anchor="middle" fill="#1a4080" font-weight="bold" font-size="12">Global scope</text>
+  <text x="450" y="84" text-anchor="middle" fill="#888" font-size="10">(dove baz viene eseguita)</text>
+
+  <!-- baz = foo() -->
+  <rect x="360" y="94" width="180" height="36" rx="4" fill="#c8dcf5" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="450" y="108" text-anchor="middle" fill="#1a4080" font-family="'SF Mono',Consolas,monospace" font-size="11">var baz = foo()</text>
+  <text x="450" y="124" text-anchor="middle" fill="#4a6080" font-size="10">baz è bar — eseguita qui fuori</text>
+
+  <!-- baz() call -->
+  <rect x="360" y="144" width="180" height="50" rx="4" fill="#c8dcf5" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="450" y="162" text-anchor="middle" fill="#1a4080" font-family="'SF Mono',Consolas,monospace" font-size="11">baz() → console.log(a)</text>
+  <text x="450" y="178" text-anchor="middle" fill="#27ae60" font-size="10" font-weight="bold">// 2 — closure!</text>
+  <text x="450" y="194" text-anchor="middle" fill="#888" font-size="9">`a` trovata nello scope di foo()</text>
+
+  <!-- Code at bottom -->
+  <rect x="20" y="238" width="540" height="68" rx="6" fill="#1e1e1e"/>
+  <text x="36" y="256" fill="#d4d4d4" font-family="'SF Mono',Consolas,monospace" font-size="11">function <tspan fill="#dcdcaa">foo</tspan>() {  <tspan fill="#6a9955">/* scope di foo */</tspan></text>
+  <text x="36" y="272" fill="#d4d4d4" font-family="'SF Mono',Consolas,monospace" font-size="11">  <tspan fill="#569cd6">var</tspan> a = <tspan fill="#b5cea8">2</tspan>;  function <tspan fill="#dcdcaa">bar</tspan>() { console.<tspan fill="#dcdcaa">log</tspan>(a); }  return bar; }</text>
+  <text x="36" y="288" fill="#d4d4d4" font-family="'SF Mono',Consolas,monospace" font-size="11"><tspan fill="#569cd6">var</tspan> baz = <tspan fill="#dcdcaa">foo</tspan>();  baz(); <tspan fill="#6a9955">// 2 — bar esegue fuori da foo ma ricorda il suo scope</tspan></text>
+  <text x="36" y="304" fill="#d4d4d4" font-family="'SF Mono',Consolas,monospace" font-size="11"></text>
+</svg>
